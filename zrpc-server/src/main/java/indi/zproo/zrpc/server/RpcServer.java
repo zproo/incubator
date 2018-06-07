@@ -49,5 +49,6 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// todo: 启动rpc服务器 & 注册rpc服务
+
 	}
 }
