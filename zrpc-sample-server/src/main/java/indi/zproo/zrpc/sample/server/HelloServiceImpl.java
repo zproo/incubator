@@ -2,11 +2,13 @@ package indi.zproo.zrpc.sample.server;
 
 import indi.zproo.zrpc.sample.server.sample.api.HelloService;
 import indi.zproo.zrpc.sample.server.sample.api.Person;
+import indi.zproo.zrpc.server.RpcService;
 
 /**
  * @author: zproo
  * @create: 2018-06-07 15:04
  **/
+@RpcService(HelloService.class)
 public class HelloServiceImpl implements HelloService {
 
 	@Override
