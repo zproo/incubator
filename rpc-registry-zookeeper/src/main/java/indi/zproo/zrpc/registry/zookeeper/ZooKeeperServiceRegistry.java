@@ -20,7 +20,7 @@ public class ZooKeeperServiceRegistry implements ServiceRegistry {
 
 	public ZooKeeperServiceRegistry(String zkAddress) {
 		zkClient = new ZkClient(zkAddress, Constant.ZK_SESSION_TIMEOUT, Constant.ZK_CONNECTION_TIMEOUT);
-		logger.debug("connect zookeepper");
+		logger.debug("connect zookeeper");
 	}
 
 	/**

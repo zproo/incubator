@@ -51,18 +51,18 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
 	/**
 	 * spring 容器初始化后，获得 spring 的 ApplicationContext 对象
 	 *
-	 * @param applicationContext
+	 * @param applicationContext ApplicationContext 对象
 	 * @throws BeansException
 	 */
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-
 		// 扫描带有 @RPCService 注解的类并初始化 handlerMap 对象
 		Map<String, Object> serviceBeanMap = applicationContext.getBeansWithAnnotation(RpcService.class);
 		if (MapUtils.isNotEmpty(serviceBeanMap)) {
 			for (Object serviceBean : serviceBeanMap.values()) {
+				// 获取类的注解对象
 				RpcService rpcService = serviceBean.getClass().getAnnotation(RpcService.class);
-				// 获取 服务的实现类 类名
+				// 通过注解中配置的属性，获取服务的接口名&版本名
 				String serviceName = rpcService.value().getName();
 				String serviceVersion = rpcService.version();
 				if (StringUtil.isNotEmpty(serviceVersion)) {
@@ -74,7 +74,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
 	}
 
 	/**
-	 * spring初始化bean之前做的操作
+	 * spring 初始化 bean 之前做的操作
 	 *
 	 * @throws Exception
 	 */
@@ -93,7 +93,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
 						@Override
 						protected void initChannel(SocketChannel ch) throws Exception {
 							ChannelPipeline pipeLine = ch.pipeline();
-							// todo: 实现协议 编码 解码
+							// 实现协议 编码 解码
 							pipeLine.addLast(new RpcDecoder(RpcRequest.class)); // 解码 rpc 请求
 							pipeLine.addLast(new RpcEncoder(RpcResponse.class)); // 编码 rpc 响应
 							pipeLine.addLast(new RpcServerHandler(handlerMap)); // 处理 rpc 请求

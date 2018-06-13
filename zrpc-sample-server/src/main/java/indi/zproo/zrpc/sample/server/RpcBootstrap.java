@@ -14,7 +14,6 @@ public class RpcBootstrap {
 
 	public static void main(String[] args) {
 		logger.debug("start server!!");
-
 		new ClassPathXmlApplicationContext("spring.xml");
 	}
 }
