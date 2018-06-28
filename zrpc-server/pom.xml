@@ -25,13 +25,13 @@
         <!-- RPC Common -->
         <dependency>
             <groupId>indi.zproo.zrpc</groupId>
-            <artifactId>rpc-common</artifactId>
+            <artifactId>zrpc-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- RPC Registry with ZooKeeper -->
         <dependency>
             <groupId>indi.zproo.zrpc</groupId>
-            <artifactId>rpc-registry-zookeeper</artifactId>
+            <artifactId>zrpc-registry-zookeeper</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

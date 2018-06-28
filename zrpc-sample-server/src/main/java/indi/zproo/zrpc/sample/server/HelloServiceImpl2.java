@@ -1,7 +1,7 @@
 package indi.zproo.zrpc.sample.server;
 
-import indi.zproo.zrpc.sample.server.sample.api.HelloService;
-import indi.zproo.zrpc.sample.server.sample.api.Person;
+import indi.zproo.zrpc.sample.api.HelloService;
+import indi.zproo.zrpc.sample.api.Person;
 import indi.zproo.zrpc.server.RpcService;
 
 /**

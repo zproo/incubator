@@ -9,20 +9,36 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zrpc-client</artifactId>
+    <artifactId>zrpc-registry-zookeeper</artifactId>
 
     <dependencies>
+        <!-- SLF4J -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <!-- ZooKeeper -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <!-- ZkClient -->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+        </dependency>
         <!-- RPC Common -->
         <dependency>
             <groupId>indi.zproo.zrpc</groupId>
             <artifactId>zrpc-common</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- RPC Registry with ZooKeeper -->
+        <!-- RPC Registry -->
         <dependency>
             <groupId>indi.zproo.zrpc</groupId>
-            <artifactId>zrpc-registry-zookeeper</artifactId>
+            <artifactId>zrpc-registry</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
+    
 </project>

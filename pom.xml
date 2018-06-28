@@ -13,9 +13,10 @@
         <module>zrpc-client</module>
         <module>zrpc-sample-api</module>
         <module>zrpc-sample-server</module>
-        <module>rpc-common</module>
-        <module>rpc-registry-zookeeper</module>
-        <module>rpc-registry</module>
+        <module>zrpc-common</module>
+        <module>zrpc-registry-zookeeper</module>
+        <module>zrpc-registry</module>
+        <module>zrpc-sample-client</module>
     </modules>
 
     <properties>
