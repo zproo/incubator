@@ -22,13 +22,15 @@ public class RpcDecoder extends ByteToMessageDecoder {
 	@Override
 	protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
 
+		// 检查是否至少有4个字节可读
 		if (in.readableBytes()<4) {
 			return;
 		}
-		// todo: ? in.markReaderIndex();
+		// 标记读指针位置，以便可以回滚指针
 		in.markReaderIndex();
 		int dataLength = in.readInt();
 		if (in.readableBytes() < dataLength) {
+			// 如果读取的包长度不够 dataLength，回滚指针不做处理，等待下个包再解析
 			in.resetReaderIndex();
 			return;
 		}

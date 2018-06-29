@@ -58,7 +58,7 @@ public class RpcProxy {
 
         // 创建动态代理对象
         return (T)Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class<?>[] {interfaceClass},
-            new InvocationHandler() {
+                new InvocationHandler() {
                 @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 

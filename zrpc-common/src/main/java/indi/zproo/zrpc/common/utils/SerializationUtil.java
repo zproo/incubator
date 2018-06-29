@@ -46,6 +46,7 @@ public class SerializationUtil {
 		try {
 			// The getSchema method is also thread-safe
 			Schema<T> schema = getSchema(cls);
+
 			protostuff = ProtostuffIOUtil.toByteArray(obj, schema, buffer);
 			return protostuff;
 		} catch (Exception e) {
@@ -63,6 +64,7 @@ public class SerializationUtil {
 			// deser
 			T objParsed = objenesis.newInstance(cls);
 			Schema<T> schema = getSchema(cls);
+
 			ProtostuffIOUtil.mergeFrom(data, objParsed, schema);
 			return objParsed;
 		} catch (Exception e) {

@@ -50,14 +50,20 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
 
 	/**
 	 * spring 容器初始化后，获得 spring 的 ApplicationContext 对象
+	 * 扫描所有的 rpc 服务提供者
 	 *
 	 * @param applicationContext ApplicationContext 对象
 	 * @throws BeansException
 	 */
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		// 扫描带有 @RPCService 注解的类并初始化 handlerMap 对象
+
+		/*
+		* 扫描带有 @RPCService 注解的类并初始化 handlerMap 对象
+		* 获得提供 rpc 服务的 java 对象
+		* */
 		Map<String, Object> serviceBeanMap = applicationContext.getBeansWithAnnotation(RpcService.class);
+
 		if (MapUtils.isNotEmpty(serviceBeanMap)) {
 			for (Object serviceBean : serviceBeanMap.values()) {
 				// 获取类的注解对象
@@ -75,6 +81,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
 
 	/**
 	 * spring 初始化 bean 之前做的操作
+	 * 启动 netty 服务器 & 注册服务地址
 	 *
 	 * @throws Exception
 	 */
